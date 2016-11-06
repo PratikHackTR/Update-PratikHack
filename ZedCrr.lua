@@ -23,15 +23,15 @@ printMessage = function(message) print("<font color=\"#6699ff\"><b>" .. ScriptNa
 if Check(LIB_PATH.."SourceLibk.lua") then
 	require 'SourceLibk'
 else
-	printMessage("Cant check SourceLibk. Download lastest version")
+	printMessage("Kutuphane kontrol edilmiyor guncelleme. Download lastest version")
 	UPDATE_HOST = "raw.github.com"
-    UPDATE_PATH = "/kej1191/anonym/master/Common/SourceLibk.lua" .. "?rand="..math.random(1,10000)
+    UPDATE_PATH = "/PratikHackTR/Update-PratikHack/master/PHLib.lua" .. "?rand="..math.random(1,10000)
     UPDATE_URL = "https://"..UPDATE_HOST..UPDATE_PATH
 	DownloadFile(UPDATE_URL, LIB_PATH .. "SourceLibk.lua", function() printMessage("Successfully Download, please reload!") end)
 	return
 end
 local VERSION = 1.6
-SimpleUpdater("[ZedPH]", VERSION, "raw.github.com" , "/UnrealCore/GithubForBotOfLegends/master/Script/ZedCore/ZedCore.lua" , SCRIPT_PATH .. "ZedCore.lua" , "/UnrealCore/GithubForBotOfLegends/master/Script/ZedCore/ZedCore.version" ):CheckUpdate()
+SimpleUpdater("[ZedPH]", VERSION, "raw.github.com" , "/PratikHackTR/Update-PratikHack/master/ZedCrr.lua" , SCRIPT_PATH .. "ZedCore.lua" , "/UnrealCore/GithubForBotOfLegends/master/Script/ZedCore/ZedCore.version" ):CheckUpdate()
 local DangerousList = {
 	"AatroxQ",
 	"AhriSeduce",
