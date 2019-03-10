@@ -1,2 +1,2 @@
-Versiyon 1.0 ilk sürümdür
------------------
+N.T.P - Güncelleme programı çalışmam
+------------------------------------
