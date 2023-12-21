@@ -1,0 +1,878 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Timers;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
+
+namespace PH_sessizkurulum
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            comboBox1.Text = "Bölge seçin";
+
+            if (!IsDotNet35Installed())
+            {
+                DialogResult result = MessageBox.Show("E-imza için .NET Framework 3.5 gereklidir. Yüklenip açılsın mı?", "Uyarı", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    InstallAndEnableDotNet35();
+                    MessageBox.Show("Bilgisayarınızı yeniden başlatmanız gerekiyor. E-imza için .NET Framework 3.5 açıldı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Application.Exit(); // Programı kapat (Bilgisayar yeniden başlatıldığında tekrar başlayacak)
+                }
+                else
+                {
+                    Application.Exit(); // Programı kapat
+                }
+            }
+        }
+
+        private bool IsDotNet35Installed()
+        {
+            try
+            {
+                // .NET Framework 3.5 anahtarı var mı kontrol et
+                using (Microsoft.Win32.RegistryKey ndpKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\NET Framework Setup\NDP\v3.5"))
+                {
+                    return (ndpKey != null && ndpKey.GetValue("Install")?.ToString() == "1");
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        private void InstallAndEnableDotNet35()
+        {
+            try
+            {
+                // .NET Framework 3.5 yüklemesi ve etkinleştirmesi
+                Process.Start("DISM.exe", "/Online /Enable-Feature /FeatureName:NetFx3 /All /LimitAccess /Source:X:\\sources\\sxs");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+            private void LogEkle(string logMesaji)
+        {
+            logkaydi.Items.Add(logMesaji);
+        }
+
+        //////////////////////////////////
+        // EXECUTE COMMAND KOMUT TANIMLAMASI BAŞLANGIÇ
+        private void ExecuteCommand(string command)
+        {
+            Process process = new Process();
+            process.StartInfo.FileName = "cmd.exe";
+            process.StartInfo.Arguments = "/c " + command;
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.CreateNoWindow = true;
+            process.Start();
+            process.WaitForExit();
+            string output = process.StandardOutput.ReadToEnd();
+            logkaydi.Items.Add("CMD üzerinden : " + output + " - kod yürütüldü");
+        }
+        // EXECUTE COMMAND KOMUT TANIMLAMASI BİTİŞ
+        //////////////////////////////////
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string secilenmerkez = comboBox1.SelectedItem.ToString();
+            if (secilenmerkez == "Yüreğir")
+            {
+                ExecuteCommand("net use N: \\\\10.3.0.201\\nucleus /u:\"nucleus\" \"\"");
+                ExecuteCommand("echo 'Nucleus N atandı'");
+                ExecuteCommand("regedit N:\\AVIC_NUCL.reg");
+                ExecuteCommand("echo 'Avic_NUCL çalıştırıldı'");
+                ExecuteCommand("regedit N:\\11gR2N-64bit.reg");
+                ExecuteCommand("echo '11gR2N-64bit çalıştırıldı'");
+                ExecuteCommand("setx path \"%PATH%;\\\\10.3.0.201\\nucleus\\clients\\11gR2\\product\\11.2.0\\BIN\" /M");
+                ExecuteCommand("echo 'Nucleus pathe eklendi'");
+                ExecuteCommand("copy n:\\Nucleus.lnk \"C:\\Documents and Settings\\All Users\\Desktop\"");
+                ExecuteCommand("echo 'Masaüstüne Nucleus kısayolu oluşturuldu'");
+                // Yüreğir nucleus kurulum komutları execute olarak atılıyor
+                //////////////////////////////////
+                logkaydi.Items.Clear();
+                logkaydi.Items.Add("Nucleus kurulumu başarıyla tamamlandı");
+                radminkur.Start();
+            }
+            else if (secilenmerkez == "Kışla")
+            {
+                ExecuteCommand("net use N: \\\\10.104.2.10\\nucleus /u:\"nucleus\" \"\"");
+                ExecuteCommand("echo 'Nucleus N atandı'");
+                ExecuteCommand("regedit N:\\AVIC_NUCL.reg");
+                ExecuteCommand("echo 'Avic_NUCL çalıştırıldı'");
+                ExecuteCommand("regedit N:\\11gR2N-64bit.reg");
+                ExecuteCommand("echo '11gR2N-64bit çalıştırıldı'");
+                ExecuteCommand("setx path \"%PATH%;\\\\10.104.2.10\\nucleus\\clients\\11gR2\\product\\11.2.0\\BIN\" /M");
+                ExecuteCommand("echo 'Nucleus pathe eklendi'");
+                ExecuteCommand("copy n:\\Nucleus.lnk \"C:\\Documents and Settings\\All Users\\Desktop\"");
+                ExecuteCommand("echo 'Masaüstüne Nucleus kısayolu oluşturuldu'");
+                // Kışla nucleus kurulum komutları execute olarak atılıyor
+                //////////////////////////////////
+                logkaydi.Items.Clear();
+                logkaydi.Items.Add("Nucleus kurulumu başarıyla tamamlandı");
+                radminkur.Start();
+            }
+            else if (secilenmerkez == "Seyhan")
+            {
+                ExecuteCommand("net use N: \\\\10.105.0.5\\nucleus /u:\"nucleus\" \"\"");
+                ExecuteCommand("echo 'Nucleus N atandı'");
+                ExecuteCommand("regedit N:\\AVIC_NUCL.reg");
+                ExecuteCommand("echo 'Avic_NUCL çalıştırıldı'");
+                ExecuteCommand("regedit N:\\11gR2N-64bit.reg");
+                ExecuteCommand("echo '11gR2N-64bit çalıştırıldı'");
+                ExecuteCommand("setx path \"%PATH%;\\\\10.105.0.5\\nucleus\\clients\\11gR2\\product\\11.2.0\\BIN\" /M");
+                ExecuteCommand("echo 'Nucleus pathe eklendi'");
+                ExecuteCommand("copy n:\\Nucleus.lnk \"C:\\Documents and Settings\\All Users\\Desktop\"");
+                ExecuteCommand("echo 'Masaüstüne Nucleus kısayolu oluşturuldu'");
+                // Seyhan nucleus kurulum komutları execute olarak atılıyor
+                //////////////////////////////////
+                logkaydi.Items.Clear();
+                logkaydi.Items.Add("Nucleus kurulumu başarıyla tamamlandı");
+                radminkur.Start();
+            }
+            else if (secilenmerkez == "Çukurova")
+            {
+                ExecuteCommand("net use N: \\\\10.12.0.201\\nucleus /u:\"nucleus\" \"\"");
+                ExecuteCommand("echo 'Nucleus N atandı'");
+                ExecuteCommand("regedit N:\\AVIC_NUCL.reg");
+                ExecuteCommand("echo 'Avic_NUCL çalıştırıldı'");
+                ExecuteCommand("regedit N:\\11gR2N-64bit.reg");
+                ExecuteCommand("echo '11gR2N-64bit çalıştırıldı'");
+                ExecuteCommand("setx path \"%PATH%;\\\\10.12.0.201\\nucleus\\clients\\11gR2\\product\\11.2.0\\BIN\" /M");
+                ExecuteCommand("echo 'Nucleus pathe eklendi'");
+                ExecuteCommand("copy n:\\Nucleus.lnk \"C:\\Documents and Settings\\All Users\\Desktop\"");
+                ExecuteCommand("echo 'Masaüstüne Nucleus kısayolu oluşturuldu'");
+                MessageBox.Show("Çukurova'da değilseniz Nucleusu çalıştırmayın", "PH UYARIYOR--");
+                // Çukurova nucleus kurulum komutları execute olarak atılıyor
+                //////////////////////////////////
+                logkaydi.Items.Clear();
+                logkaydi.Items.Add("Nucleus kurulumu başarıyla tamamlandı");
+                radminkur.Start();
+            }
+            else
+            {
+                MessageBox.Show("Merkez Seçmediniz...");
+                logkaydi.Items.Clear();
+                logkaydi.Items.Add("MERKEZ SEÇİMİ YAPMADINIZ");
+            }
+            
+        }
+
+
+        private void radminkur_Tick(object sender, EventArgs e)
+        {
+            radminkur.Stop();
+            ///////// RADMİN KURULUMU VE BİTİP BİTMEDİĞİNİ TAKİP EDİYORUM
+            logkaydi.Items.Add("------");
+            string exeKonum = AppDomain.CurrentDomain.BaseDirectory;
+            string radminServerDosyaAdi = "Radmin_Server_3.5.2.1_TR.msi";
+            string radminServerKonum = Path.Combine(exeKonum, radminServerDosyaAdi);
+            string arguments = "/passive";
+
+            try
+            {
+                Process process = new Process();
+                process.StartInfo.FileName = radminServerKonum;
+                process.StartInfo.Arguments = arguments;
+                process.Start();
+
+                process.WaitForExit(); // Kurulumun tamamlanmasını bekle
+
+                int exitCode = process.ExitCode;
+
+                if (exitCode == 0)
+                {
+                    logkaydi.Items.Add("Kurulum işlemi başarıyla tamamlandı - Lisans yükleniyor");
+
+                    // NewTrialStop v2.3 için INSTALL işlemleri
+                    
+                    ProcessStartInfo psi = new ProcessStartInfo
+                    {
+                        FileName = "cmd.exe",
+                        RedirectStandardInput = true,
+                        RedirectStandardOutput = true,
+                        UseShellExecute = false,
+                        CreateNoWindow = false
+                    };
+
+                    Process processCmd = new Process { StartInfo = psi };
+                    processCmd.Start();
+
+                    StreamWriter sw = processCmd.StandardInput;
+                    sw.WriteLine("cd " + Application.StartupPath);
+                    sw.WriteLine("installScript.bat");
+                    sw.WriteLine("exit");
+
+                    processCmd.WaitForExit();
+
+                    // Çıkış kodunu kontrol et
+                    int exitCodeInstall = processCmd.ExitCode;
+                    if (exitCodeInstall == 0)
+                    {
+                        logkaydi.Items.Add("Lisans-başkent kullanıcısı başarıyla yüklendi");
+                        string exeDizin = AppDomain.CurrentDomain.BaseDirectory;
+
+                        string regDosya1 = Path.Combine(exeDizin, "radminreg1.reg");
+                        string regDosya2 = Path.Combine(exeDizin, "radminreg2.reg");
+                        string regDosya3 = Path.Combine(exeDizin, "radminreg3.reg");
+
+                        CalistirRegDosyasi(regDosya1);
+                        CalistirRegDosyasi(regDosya2);
+                        CalistirRegDosyasi(regDosya3);
+                        clearcanvaskur.Start();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Yükleme sırasında bir hata oluştu. Hata Kodu: " + exitCodeInstall, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Kurulum sırasında bir hata oluştu. Hata Kodu: " + exitCode, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            logkaydi.Items.Add("Radmin Kuruldu");
+            logkaydi.Items.Add("------");
+            
+        }
+
+
+        private void CalistirRegDosyasi(string regDosyaYolu)
+        {
+            try
+            {
+                Process regeditProcess = new Process();
+                regeditProcess.StartInfo.FileName = "regedit.exe";
+                regeditProcess.StartInfo.Arguments = "/s " + regDosyaYolu;
+                regeditProcess.Start();
+                regeditProcess.WaitForExit();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Reg dosyasını çalıştırma hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+            ////////////// CLEAR CANVAS KURULUMU
+            private void CCveITPkur_Tick(object sender, EventArgs e)
+        {
+            clearcanvaskur.Stop();
+            try
+            {
+                string sourcePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "pacs64", "ITP");
+                string destinationPath = Path.Combine("C:\\", "ITP");
+
+                // Klasörü kopyala
+                if (CopyDirectory(sourcePath, destinationPath))
+                {
+                    logkaydi.Items.Add("ClearCanvas başarıyla kuruldu");
+                    pacsayar.Start();
+                }
+                else
+                {
+                    MessageBox.Show("ClearCanvas kurulumunda hata oluştu", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private static bool CopyDirectory(string sourceDir, string targetDir)
+        {
+            try
+            {
+                if (!Directory.Exists(targetDir))
+                {
+                    Directory.CreateDirectory(targetDir);
+                }
+
+                foreach (string file in Directory.GetFiles(sourceDir))
+                {
+                    string dest = Path.Combine(targetDir, Path.GetFileName(file));
+                    File.Copy(file, dest, true);
+                }
+
+                foreach (string folder in Directory.GetDirectories(sourceDir))
+                {
+                    string dest = Path.Combine(targetDir, Path.GetFileName(folder));
+                    CopyDirectory(folder, dest);
+                }
+
+                return true; // Başarıyla tamamlandı
+            }
+            catch (Exception)
+            {
+                return false; // Hata oluştu
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            itpconfig.Start();
+        }
+
+        private void pacsayar_Tick(object sender, EventArgs e)
+        {
+            pacsayar.Stop();
+            try
+            {
+                string sourcePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "pacsayar", "ClearCanvas_Inc");
+                string destinationPath = Path.Combine("C:\\ProgramData", "ClearCanvas_Inc");
+
+                // Klasörü kopyala
+                if (PacsAyariKopyala(sourcePath, destinationPath))
+                {
+                    LogEkle("Pacs ayarları yapıldı.");
+                    ITPkur.Start();
+                }
+                else
+                {
+                    LogEkle("Klasör kopyalama işlemi sırasında bir hata oluştu.");
+                }
+            }
+            catch (Exception ex)
+            {
+                LogEkle("Hata oluştu: " + ex.Message);
+            }
+        }
+        private static bool PacsAyariKopyala(string sourceDir, string targetDir)
+        {
+            try
+            {
+                if (!Directory.Exists(targetDir))
+                {
+                    Directory.CreateDirectory(targetDir);
+                }
+
+                foreach (string file in Directory.GetFiles(sourceDir))
+                {
+                    string dest = Path.Combine(targetDir, Path.GetFileName(file));
+                    File.Copy(file, dest, true);
+                }
+
+                foreach (string folder in Directory.GetDirectories(sourceDir))
+                {
+                    string dest = Path.Combine(targetDir, Path.GetFileName(folder));
+                    PacsAyariKopyala(folder, dest);
+                }
+
+                return true; // Başarıyla tamamlandı
+            }
+            catch (Exception)
+            {
+                return false; // Hata oluştu
+            }
+        }
+
+        private void ITPkur_Tick(object sender, EventArgs e)
+        {
+            ITPkur.Stop();
+            try
+            {
+                string msiFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ITP.msi");
+                string arguments = "/passive";
+
+                // Paketi kur
+                if (KurulumYap(msiFilePath, arguments))
+                {
+                    LogEkle("ITP kurulum başarıyla tamamlandı.");
+
+                    // Kurulum başarılıysa Timer'ı başlat
+                    itpconfig.Start();
+                }
+                else
+                {
+                    LogEkle("Kurulum sırasında bir hata oluştu.");
+                }
+            }
+            catch (Exception ex)
+            {
+                LogEkle("Hata oluştu: " + ex.Message);
+            }
+        }
+        private static bool KurulumYap(string msiFilePath, string arguments)
+        {
+            try
+            {
+                Process process = new Process();
+                process.StartInfo.FileName = msiFilePath;
+                process.StartInfo.Arguments = arguments;
+                process.Start();
+
+                process.WaitForExit(); // Kurulumun tamamlanmasını bekle
+
+                int exitCode = process.ExitCode;
+
+                return exitCode == 0; // Başarıyla tamamlandı mı kontrol et
+            }
+            catch (Exception)
+            {
+                return false; // Hata oluştu
+            }
+        }
+
+        private void itpconfig_Tick(object sender, EventArgs e)
+        {
+            itpconfig.Stop();
+            try
+            {
+                string sourceFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "InterPacs Application Selector.exe.Config");
+                string targetFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "InterPacs_Health_Solution\\InterPacs_Application_Sel_Url_lpdiptosizuf3zuc3em3d0tnjy0onnrl\\1.4.0.2");
+
+                // Dosyayı kopyala
+                if (itpconfigKopyala(sourceFilePath, targetFolderPath))
+                {
+                    LogEkle("ITPApplication config işlemi başarıyla tamamlandı.");
+                    clearcanvaskisayol.Start();
+                }
+                else
+                {
+                    LogEkle("Dosya kopyalama işlemi sırasında bir hata oluştu.");
+                }
+            }
+            catch (Exception ex)
+            {
+                LogEkle("Hata oluştu: " + ex.Message);
+            }
+        }
+
+        private static bool itpconfigKopyala(string sourceFilePath, string targetFolderPath)
+        {
+            try
+            {
+                // Hedef klasörü oluştur
+                if (!Directory.Exists(targetFolderPath))
+                {
+                    Directory.CreateDirectory(targetFolderPath);
+                }
+
+                // Dosyayı kopyala
+                string targetFilePath = Path.Combine(targetFolderPath, "InterPacs Application Selector.exe.Config");
+                File.Copy(sourceFilePath, targetFilePath, true);
+
+                return true; // Başarıyla tamamlandı
+            }
+            catch (Exception)
+            {
+                return false; // Hata oluştu
+            }
+        }
+
+        private void clearcanvaskisayol_Tick(object sender, EventArgs e)
+        {
+            clearcanvaskisayol.Stop();
+            try
+            {
+                string sourceShortcutPath = Path.Combine("C:\\ITP\\viewer", "Clear Canvas.lnk");
+                string desktopFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+                // Kısayolu kopyala
+                if (KisayoluKopyala(sourceShortcutPath, desktopFolderPath))
+                {
+                    LogEkle("Kısayol kopyalama işlemi başarıyla tamamlandı.");
+                    Chromekur.Start();
+                }
+                else
+                {
+                    LogEkle("Kısayol kopyalama işlemi sırasında bir hata oluştu.");
+                }
+            }
+            catch (Exception ex)
+            {
+                LogEkle("Hata oluştu: " + ex.Message);
+            }
+        }
+
+        private static bool KisayoluKopyala(string sourceShortcutPath, string targetFolderPath)
+        {
+            try
+            {
+                // Hedef klasörü oluştur
+                if (!Directory.Exists(targetFolderPath))
+                {
+                    Directory.CreateDirectory(targetFolderPath);
+                }
+
+                // Kısayolu hedef klasöre kopyala
+                string targetShortcutPath = Path.Combine(targetFolderPath, "Clear Canvas.lnk");
+                File.Copy(sourceShortcutPath, targetShortcutPath, true);
+
+                return true; // Başarıyla tamamlandı
+            }
+            catch (Exception)
+            {
+                return false; // Hata oluştu
+            }
+        }
+
+        private void Chromekur_Tick(object sender, EventArgs e)
+        {
+            Chromekur.Stop();
+            try
+            {
+                string chromeSetupFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ChromeStandaloneSetup64.exe");
+
+                // Chrome'u silent modda kur
+                ChromekurulumuBaslat(chromeSetupFilePath);
+
+                LogEkle("Chrome kurulumu başarıyla tamamlandı.");
+
+                // Java kurulumu için timer'ı başlat
+                javakur.Start();
+            }
+            catch (Exception ex)
+            {
+                LogEkle("Hata oluştu: " + ex.Message);
+            }
+        }
+
+        private static void ChromekurulumuBaslat(string setupFilePath)
+        {
+            try
+            {
+                Process.Start(setupFilePath, "/silent /install");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void javakur_Tick(object sender, EventArgs e)
+        {
+            javakur.Stop();
+            try
+            {
+                string javaSetupFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "java8_32.exe");
+
+                // Java'yı silent modda kur
+                JavaKurulumuBaslat(javaSetupFilePath);
+
+                LogEkle("Java kurulumu başarıyla tamamlandı.");
+
+                // Java kurulumu tamamlandıktan sonra javakur64 timer'ını başlat
+                javakur64.Start();
+            }
+            catch (Exception ex)
+            {
+                LogEkle("Hata oluştu: " + ex.Message);
+            }
+        }
+
+        private static void JavaKurulumuBaslat(string setupFilePath)
+        {
+            try
+            {
+                Process.Start(setupFilePath, "/s");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void javakur64_Tick(object sender, EventArgs e)
+        {javakur64.Stop();
+            try
+            {
+                string java64SetupFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "java8_64.exe");
+
+                // Java'yı 64-bit silent modda kur
+                Java64KurulumuBaslat(java64SetupFilePath);
+
+                LogEkle("Java 64-bit kurulumu başarıyla tamamlandı.");
+
+                // Java 64-bit kurulumu tamamlandıktan sonra winrarkur timer'ını başlat
+                winrarkur.Start();
+            }
+            catch (Exception ex)
+            {
+                LogEkle("Hata oluştu: " + ex.Message);
+            }
+        }
+
+        private static void Java64KurulumuBaslat(string setupFilePath)
+        {
+            try
+            {
+                Process.Start(setupFilePath, "/s");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void winrarkur_Tick(object sender, EventArgs e)
+        {
+            winrarkur.Stop();
+            try
+            {
+                string winrarSetupFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Winrar.exe");
+
+                // WinRAR'ı silent modda kur
+                WinrarKurulumuBaslat(winrarSetupFilePath);
+
+                LogEkle("WinRAR kurulumu başarıyla tamamlandı.");
+
+                // WinRAR kurulumu tamamlandıktan sonra cppkur timer'ını başlat
+                cppkur.Start();
+            }
+            catch (Exception ex)
+            {
+                LogEkle("Hata oluştu: " + ex.Message);
+            }
+        }
+
+        private static void WinrarKurulumuBaslat(string setupFilePath)
+        {
+            try
+            {
+                Process.Start(setupFilePath, "/S");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        //////////////////////////////////
+        // EXECUTE COMMAND KOMUT TANIMLAMASI BAŞLANGIÇ CPP
+        private void cppkomut(string command)
+        {
+            Process process = new Process();
+            process.StartInfo.FileName = "cmd.exe";
+            process.StartInfo.Arguments = "/c " + command;
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.CreateNoWindow = true;
+            process.Start();
+            process.WaitForExit();
+            string output = process.StandardOutput.ReadToEnd();
+            logkaydi.Items.Add("CMD üzerinden : " + output + " - kod yürütüldü");
+        }
+        // EXECUTE COMMAND KOMUT TANIMLAMASI BİTİŞ CPP
+        //////////////////////////////////
+        private void cppkur_Tick(object sender, EventArgs e)
+        {
+            cppkur.Stop();
+            //cppkomut("cd cd C:\\Users\\Public\\Desktop\\phsilent\\C++");
+            cppkomut("cd cd "+Application.StartupPath+" & start /wait vcredist2005_x86.exe /q");
+            cppkomut("cd cd "+Application.StartupPath+" & start /wait vcredist2005_x64.exe /q");
+            cppkomut("cd cd "+Application.StartupPath+" & start /wait vcredist2008_x86.exe /qb");
+            cppkomut("cd cd "+Application.StartupPath+" & start /wait vcredist2008_x64.exe /qb");
+            cppkomut("cd cd "+Application.StartupPath+" & start /wait vcredist2010_x86.exe /passive /norestart");
+            cppkomut("cd cd "+Application.StartupPath+" & start /wait vcredist2010_x64.exe /passive /norestart");
+            cppkomut("cd cd "+Application.StartupPath+" & start /wait vcredist2012_x86.exe /passive /norestart");
+            cppkomut("cd cd "+Application.StartupPath+" & start /wait vcredist2012_x64.exe /passive /norestart");
+            cppkomut("cd cd "+Application.StartupPath+" & start /wait vcredist2013_x86.exe /passive /norestart");
+            cppkomut("cd cd "+Application.StartupPath+" & start /wait vcredist2013_x64.exe /passive /norestart");
+            cppkomut("cd cd "+Application.StartupPath+" & start /wait vcredist2015_2017_2019_2022_x86.exe /passive /norestart");
+            cppkomut("cd cd "+Application.StartupPath+" & start /wait vcredist2015_2017_2019_2022_x64.exe /passive /norestart");
+            logkaydi.Items.Add("C++ 2008-2022 tamamıyla kuruldu");
+            palmakur.Start();
+        }
+
+        private void palmakur_Tick(object sender, EventArgs e)
+        {
+            palmakur.Stop();
+            try
+            {
+                string palmaSetupFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "palma.exe");
+
+                // Palma'yı silent modda kur
+                PalmaKurulumuBaslat(palmaSetupFilePath);
+
+                LogEkle("Palma kurulumu başarıyla tamamlandı.");
+
+                // Palma kurulumu tamamlandıktan sonra arksignerkur timer'ını başlat
+                arksignerkur.Start();
+            }
+            catch (Exception ex)
+            {
+                LogEkle("Hata oluştu: " + ex.Message);
+            }
+        }
+
+        private static void PalmaKurulumuBaslat(string setupFilePath)
+        {
+            try
+            {
+                Process.Start(setupFilePath, "/silent");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void arksignerkur_Tick(object sender, EventArgs e)
+        {
+            arksignerkur.Stop();
+            try
+            {
+                string arksignerSetupFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "arksigner.exe");
+
+                // Arksigner'ı silent modda kur
+                ArksignerKurulumuBaslat(arksignerSetupFilePath);
+
+                LogEkle("Arksigner kurulumu başarıyla tamamlandı.");
+
+                // Arksigner kurulumu tamamlandıktan sonra e_imzakur timer'ını başlat
+                e_imzakur.Start();
+            }
+            catch (Exception ex)
+            {
+                LogEkle("Hata oluştu: " + ex.Message);
+            }
+        }
+
+        private static void ArksignerKurulumuBaslat(string setupFilePath)
+        {
+            try
+            {
+                Process.Start(setupFilePath, "/silent");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void e_imzakur_Tick(object sender, EventArgs e)
+        {
+            e_imzakur.Stop();
+            try
+            {
+                string nuclEimzaDllFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "nuclEimza.dll");
+                string frameworkPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "Microsoft.NET\\Framework\\v2.0.50727");
+
+                // nuclEimza.dll'yi C:\Windows\Microsoft.NET\Framework\v2.0.50727\ klasörüne kopyala
+                NuclEimzaDllKopyala(nuclEimzaDllFilePath, frameworkPath);
+
+                LogEkle("nuclEimza.dll dosyası başarıyla C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\ klasörüne kopyalandı.");
+
+                // RegAsm komutlarını çalıştır
+                RegAsmKomutlariniCalist(frameworkPath, "unregister");
+                RegAsmKomutlariniCalist(frameworkPath);
+
+                LogEkle("RegAsm komutları başarıyla çalıştırıldı.");
+
+                // Tüm işlemler başarıyla tamamlandığında adobekur timer'ını başlat
+                adobekur.Start();
+            }
+            catch (Exception ex)
+            {
+                LogEkle("Hata oluştu: " + ex.Message);
+            }
+        }
+
+        private static void NuclEimzaDllKopyala(string sourceFilePath, string destinationFolder)
+        {
+            try
+            {
+                string destinationFilePath = Path.Combine(destinationFolder, "nuclEimza.dll");
+                File.Copy(sourceFilePath, destinationFilePath, true);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private static void RegAsmKomutlariniCalist(string frameworkPath, string action = "")
+        {
+            try
+            {
+                string regAsmPath = Path.Combine(frameworkPath, "RegAsm.exe");
+                string nuclEimzaDllPath = Path.Combine(frameworkPath, "nuclEimza.dll");
+
+                ProcessStartInfo startInfo = new ProcessStartInfo
+                {
+                    FileName = regAsmPath,
+                    Arguments = $"{action} {nuclEimzaDllPath}",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    CreateNoWindow = true
+                };
+
+                using (Process process = new Process { StartInfo = startInfo })
+                {
+                    process.Start();
+                    process.WaitForExit();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void adobekur_Tick(object sender, EventArgs e)
+        {
+            adobekur.Stop();
+            try
+            {
+                string acroRdrSetupFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AcroRdrDC1502020039_tr_TR.exe");
+
+                // Adobe Reader'ı silent modda kur
+                AdobeReaderKurulumuBaslat(acroRdrSetupFilePath);
+
+                LogEkle("Adobe Reader kurulumu başarıyla tamamlandı.");
+
+                // Mesaj kutusu göster
+                MessageBox.Show("Kurulum tamamen bitmiştir. İyi günler!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Programı kapat
+                Application.Exit();
+            }
+            catch (Exception ex)
+            {
+                LogEkle("Hata oluştu: " + ex.Message);
+            }
+        }
+
+        private static void AdobeReaderKurulumuBaslat(string setupFilePath)
+        {
+            try
+            {
+                Process.Start(setupFilePath, "/S");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+    }
+}
