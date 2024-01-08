@@ -1,0 +1,1042 @@
+body {
+	margin:0;
+	padding:0;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 25px;
+	color:#fff;
+	text-align: justify;
+	background:url('../images/bg-body.gif') repeat top center;
+}
+#background {
+	background: url("../images/header-bg2.gif");
+	background-repeat:repeat-x;
+	margin:0;
+	padding:0;
+}
+/*****************Start of Home Page Style***************************************************************************************/		
+
+	#background #page {
+/*
+		width:960px;
+		margin:0 auto;
+		*/
+		
+	}
+/**********Start of header ************/
+	#background #page #header {
+	width:960px;
+	height:170px;
+	margin:0 auto;
+	padding:0;
+	position:relative;
+}
+/*****************Star of left navigation**********************/
+	#background #page #header ul.navigation {
+	padding:100px 0 0 20px;
+	list-style-type:none;
+	height:49px;
+	width:290px;
+	margin:0;
+}
+#background #page #header ul.navigation li {
+	height:49px;
+	width:126px;
+	margin:0 0 0 10px;
+	float:left;
+	line-height:49px;
+}
+#background #page #header ul.navigation li a {
+	background: url("../images/menu.gif");
+	background-position: 0 -198px;
+	color: #563F1F;
+	display: block;
+	font-family: Georgia, serif;
+	font-size: 16px;
+	font-weight: bold;
+	height: 49px;
+	line-height: 40px;
+	text-decoration: none;
+	width:126px;
+	text-align:center;
+}
+#background #page #header ul.navigation li a:hover {
+	text-decoration:none;
+	display:block;
+	color:#563f1f;
+	background: url("../images/menu.gif");
+	background-position: 0 0;
+	font-family:Georgia, serif;
+	font-weight:bold;
+	font-size:16px;
+	width:126px;
+	text-align:center;
+}
+#background #page #header ul.navigation li a.active {
+	background: url("../images/menu.gif");
+	background-position: 0 0;
+}
+/*****************End of left navigation**********************/
+	
+	
+	#background #page #header a#logo {
+	text-decoration:none;
+	position:absolute;
+	left:309px;
+	top:1px;
+	z-index:100;
+}
+#background #page #header a#logo img {
+	border:0;
+}
+/*****************Star of right navigation**********************/
+	#background #page #header ul#navigation {
+	list-style-type:none;
+	height:49px;
+	width:368px;
+	margin:0;
+	position:absolute;
+	top:100px;
+	left:560px;
+}
+#background #page #header ul#navigation li {
+	height:49px;
+	width:159px;
+	margin:0 10px 0 0;
+	float:left;
+}
+#background #page #header ul#navigation li a {
+	background: url("../images/menu.gif");
+	background-position: 0 -297px;
+	color: #563F1F;
+	display: block;
+	font-family: Georgia;
+	font-size: 16px;
+	font-weight: bold;
+	height: 49px;
+	line-height: 40px;
+	text-decoration: none;
+	text-align:center;
+}
+#background #page #header ul#navigation li a:hover {
+	background: url("../images/menu.gif");
+	background-position: 0 -99px;
+	text-decoration:none;
+	display:block;
+	color:#563f1f;
+	font-size: 16px;
+	text-align:center;
+}
+#background #page #header ul#navigation li a.active {
+	background: url("../images/bg-menu-hover3.jpg");
+	background-repeat:no-repeat;
+	background-position:center;
+}
+/*****************End of right navigation**********************/
+	
+	
+	/***********************************End of header ***********************************/
+	
+	
+	#background #page #body {
+/*
+	  width:960px;
+	  margin:0 auto;
+	  overflow:hidden;
+	  */
+	  /*
+	  overflow:hidden;
+	  background:url('../images/bg-body.gif') repeat top center; 
+	  */
+	}
+/********************Start of Slider**************************/
+	#background #page #body .slider {
+	width:960px;
+	height:331px;
+	margin:0 auto;
+	overflow:hidden;
+}
+#background #page #body .slider ul {
+	width:960px;
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	overflow:hidden;
+}
+#background #page #body .slider ul li.first {
+	width:320px;
+	height:331px;
+	background: url("../images/bg-body.gif");
+	float:left;
+	text-align:center;
+	overflow:hidden;
+}
+#background #page #body .slider ul li.first a {
+	background: url("../images/button.gif");
+	background-position: 0 -61px;
+	width:217px;
+	height:35px;
+	font-family:Georgia, serif;
+	font-weight:bold;
+	font-size:20px;
+	line-height:35px;
+	color:#ffffff;
+	text-align:center;
+	margin:10px 50px;
+	display:block;
+}
+#background #page #body .slider ul li.first p {
+	color:#633f0f;
+	font-family:Arial;
+	font-size:14px;
+	padding:0 20px;
+	margin-top:0px;
+}
+#background #page #body .slider ul li.first p a {
+	color:#633f0f;
+	float:none;
+	text-decoration:none;
+	margin:0;
+	padding:0;
+}
+#background #page #body .slider ul li.first p a:hover {
+	color:#caa9b4;
+}
+#background #page #body .slider ul li.first p a img {
+	border:0;
+}
+#background #page #body .slider ul li.first span {
+	color:#980d03;
+	font-family:Georgia, serif;
+	font-weight:bold;
+	font-size:50px;
+}
+#background #page #body .slider ul li.first h2 {
+	color:#572c00;
+	pading:0 20px;
+	font-size:35px;
+	line-height:35px;
+	margin:40px 0 10px 0;
+}
+#background #page #body .slider ul li {
+	float:left;
+}
+#background #page #body .slider ul li a {
+	float:left;
+	text-decoration:none;
+	margin:0;
+	padding:0;
+}
+#background #page #body .slider ul li a img {
+	border:0;
+}
+/********************end of Slider**************************/
+	
+	
+	
+	/********************Start of Featured**************************/
+	#background #page #body ul#featured {
+	list-style-type:none;
+	margin:38px auto 0;
+	height:237px;
+	width:960px;
+	overflow:hidden;
+	padding:0;
+}
+#background #page #body ul#featured li {
+	float:left;
+	padding:0;
+	margin-right:10px;
+}
+#background #page #body ul#featured li a {
+	text-decoration:none;
+}
+#background #page #body ul#featured li a img {
+	border:0;
+}
+#background #page #body ul#featured li.first {
+	margin-right:20px;
+}
+/********************end of Featured****************************/
+	
+	
+	
+	/*************************Start of Section**************************************/
+	 #background #page #body .section {
+	width:960px;
+	height:auto;
+	overflow:hidden;
+	margin: 45px auto 0;
+}
+#background #page #body .section h3 {
+	color:#5b2f01;
+	font-family:georgia;
+	font-size:36px;
+	width:610px;
+	padding: 0 20px 0 10px;
+	float:left;
+	margin:0 10px 0 0;
+	text-align:right;
+}
+#background #page #body .section p {
+	color:#5b2f01;
+	font-family:Arial;
+	font-size:14px;
+	float:left;
+	width:260px;
+	padding:0 50px 0 0;
+	margin-top:-6px;
+}
+#background #page #body .section p a {
+	color:#5b2f01;
+}
+#background #page #body .section p a.more {
+	background: url("../images/button.gif");
+	background-position: 0 0;
+	width:8px;
+	height:11px;
+	display:inline-block;
+	cursor:pointer;
+	cursor:hand;
+	margin-left:5px;
+	text-decoration:none;
+	overflow:hidden;
+}
+#background #page #body .section p a:hover {
+	color:#ffffff;
+}
+/*************************End of Section**************************************/
+	
+	#background #page #body #content {
+	width:960px;
+	margin:50px auto 0;
+}
+#background #page #body .article {
+	width:610px;
+	background-color:#f5e1bb;
+	margin:0 15px 0 10px;
+	float:left;
+	padding:10px;
+}
+#background #page #body .article ul {
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+#background #page #body .article ul li {
+}
+#background #page #body .article ul li h2 {
+}
+#background #page #body .article ul li h2 a {
+	color:#5b2f01;
+	text-decoration:none;
+	font-family:georgia;
+	font-weight:bold;
+	font-size:18px;
+}
+#background #page #body .article ul li h2 a:hover {
+	color:#ffffff;
+}
+#background #page #body .article ul li p {
+	font-family:Arial;
+	font-size:14px;
+	color:#5b2f01;
+	text-align:text-top;
+}
+#background #page #body .article ul li p a {
+	font-family:Arial;
+	font-size:14px;
+	color:#5b2f01;
+}
+#background #page #body .article ul li p a:hover {
+	font-family:Arial;
+	font-size:14px;
+	color:#ffffff;
+}
+#background #page #body .article ul li p a img {
+	border:0;
+	float:left;
+	margin-right:10px;
+}
+#background #page #body .aside {
+	width:290px;
+	margin-right:10px;
+	float:left;
+	overflow:hidden;
+}
+#background #page #body .aside h3 {
+	font-size:24px;
+	font-weight:bold;
+	font-family:georgia;
+	color:#5b2f01;
+	text-align:center;
+	overflow:hidden;
+	margin:0;
+}
+#background #page #body .aside h3 a {
+	font-size:18px;
+	font-weight:bold;
+	font-family:georgia;
+	color:#5b2f01;
+}
+#background #page #body .aside ul {
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	overflow:hidden;
+}
+#background #page #body .aside ul li {
+	border-left: medium none;
+	border-right: medium none;
+	border-style: none none dashed;
+	border-color:#5B2F01;
+	border-width:1px;
+	border-top: medium none;
+	overflow:hidden;
+	padding:20px 0;
+}
+#background #page #body .aside ul li.last {
+	border:none;
+}
+#background #page #body .aside ul li h2 {
+	font-size:14px;
+	font-weight:bold;
+	font-family:Arial;
+	color:#5b2f01;
+	margin:0;
+	padding:0;
+}
+#background #page #body .aside ul li p {
+	color:#5b2f01;
+	margin:0;
+	padding:0;
+}
+#background #page #body .aside ul li p a {
+	color:#5b2f01;
+}
+#background #page #body .aside ul li p a:hover {
+	color:#ffffff;
+}
+/**************Start of footer ******************/	
+	#background #page #footer {
+	width:960px;
+	margin: 40px auto 40px;
+	height:90px;
+	text-align:center;
+	color:#887450;
+	line-height:90px;
+	overflow:hidden;
+}
+#background #page #footer ul {
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	overflow:hidden;
+}
+#background #page #footer ul li.first {
+	width:430px;
+	float:left;
+}
+#background #page #footer ul li.first ul {
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+#background #page #footer ul li.first ul li {
+	float:left;
+	padding:0 10px;
+	width:auto;
+}
+#background #page #footer ul li.first ul li a {
+	display:inline-block;
+	text-decoration:none;
+	color:#887450;
+	font-family:Arial;
+	font-size:14px;
+}
+#background #page #footer ul li.first ul li a:hover {
+	color:#ffffff;
+}
+#background #page #footer ul li.first ul {
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+#background #page #footer ul li {
+	width:210px;
+	float:left;
+}
+#background #page #footer ul li a:hover {
+	opacity:0.4;
+	filter:alpha(opacity=40);
+}
+#background #page #footer ul li span {
+	float:left;
+	margin-right:10px;
+}
+#background #page #footer ul li a.facebook {
+	background: url("../images/icon.gif");
+	background-position: 0 0;
+	width:25px;
+	height:25px;
+	text-decoration:none;
+	position:relative;
+	top:32px;
+	float:left;
+	margin-right:10px;
+}
+#background #page #footer ul li a.twitter {
+	background: url("../images/icon.gif");
+	background-position: 0 -75px;
+	float:left;
+	width:38px;
+	height:26px;
+	text-decoration:none;
+	position:relative;
+	top:32px;
+	margin-right:10px;
+	overflow:hidden;
+}
+#background #page #footer ul li.last {
+	width:300px;
+	float:left;
+	text-align:right;
+}
+/*****************End of Home Page Style**************************************************************************/	
+
+
+
+
+
+
+
+/*****************Start of Inner Page Style***************************************************************************************/		
+
+	#background .page {
+/*
+		width:960px;
+		margin:0 auto;
+		*/
+		
+	}
+/**********Start of header ************/
+	#background .page #header {
+	width:960px;
+	height:170px;
+	margin:0 auto;
+	padding:0;
+	position:relative;
+}
+/*****************Star of left navigation**********************/
+	#background .page #header ul.navigation {
+	padding:100px 0 0 20px;
+	list-style-type:none;
+	height:49px;
+	width:290px;
+	margin:0;
+}
+#background .page #header ul.navigation li {
+	height:49px;
+	width:126px;
+	margin:0 0 0 10px;
+	float:left;
+	line-height:49px;
+}
+#background .page #header ul.navigation li a {
+	background: url("../images/menu.gif");
+	background-position: 0 -198px;
+	color: #563F1F;
+	display: block;
+	font-family: Georgia, serif;
+	font-size: 16px;
+	font-weight: bold;
+	height: 49px;
+	line-height: 40px;
+	text-decoration: none;
+	width:126px;
+	text-align:center;
+}
+#background .page #header ul.navigation li a:hover {
+	text-decoration:none;
+	display:block;
+	color:#563f1f;
+	background: url("../images/menu.gif");
+	background-position: 0 0;
+	font-family:Georgia, serif;
+	font-weight:bold;
+	font-size:16px;
+	width:126px;
+	text-align:center;
+}
+#background .page #header ul.navigation li a.active {
+	background: url("../images/menu.gif");
+	background-position: 0 0;
+}
+/*****************End of left navigation**********************/
+	
+	
+	#background .page #header a#logo {
+	text-decoration:none;
+	position:absolute;
+	left:309px;
+	top:1px;
+	z-index:100;
+}
+#background .page #header a#logo img {
+	border:0;
+}
+/*****************Star of right navigation**********************/
+	#background .page #header ul#navigation {
+	list-style-type:none;
+	height:49px;
+	width:350px;
+	margin:0;
+	position:absolute;
+	top:100px;
+	left:560px;
+}
+#background .page #header ul#navigation li {
+	height:49px;
+	width:159px;
+	margin:0 10px 0 0;
+	float:left;
+}
+#background .page #header ul#navigation li a {
+	background: url("../images/menu.gif");
+	background-position: 0 -297px;
+	color: #563F1F;
+	display: block;
+	font-family: Georgia;
+	font-size: 16px;
+	font-weight: bold;
+	height: 49px;
+	line-height: 40px;
+	text-align:center;
+	text-decoration: none;
+}
+#background .page #header ul#navigation li a:hover {
+	background: url("../images/menu.gif");
+	background-position: 0 -99px;
+	text-decoration:none;
+	display:block;
+	color:#563f1f;
+	font-size: 16px;
+	text-align:center;
+}
+#background .page #header ul#navigation li a.active {
+	background: url("../images/menu.gif");
+	background-position: 0 -99px;
+}
+/*****************End of right navigation**********************/
+	
+	
+	/***********************************End of header ***********************************/
+	
+	
+	#background .page #body {
+	overflow:hidden;
+	background:url('../images/bg-body.gif') repeat top center;
+	padding:40px 0 0 0;
+}
+#background .page #body .content {
+	width:960px;
+	margin:0 auto;
+	background: url("../images/bg-content-top.gif");
+	background-repeat:no-repeat;
+	background-position:center top;
+	padding-top:6px;
+}
+#background .page #body .content .body {
+	background: url("../images/bg-content-bottom.gif");
+	background-repeat:no-repeat;
+	background-position:center bottom;
+	background-color:#f8f0d9;
+	padding: 0 30px 60px 30px;
+	color:#5B2F01;
+	height:auto;
+	overflow:hidden;
+}
+#background .page #body .content .body h3 {
+	height:80px;
+	width:900px;
+	margin:0 0 20px 0;
+	font-family:Georgia;
+	font-size:24px;
+	text-align:center;
+	line-height:110px;
+	border-style:solid;
+	border-top:none;
+	border-right:none;
+	border-left:none;
+	border-width:2px;
+	border-color:#887450;
+}
+#background .page #body .content .body h2 {
+	font-family:Georgia;
+	font-size:24px;
+	border-color:#887450;
+}
+#background .page #body .content .body ul {
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+#background .page #body .content .body ul li {
+	margin-bottom:20px;
+}
+#background .page #body .content .body ul li h2 {
+	margin:0;
+	padding:0;
+}
+#background .page #body .content .body ul li p {
+	margin:0;
+	padding-top:0;
+}
+#background .page #body .content .body ul li p span {
+	display:block;
+}
+#background .page #body .content .body ul li h4 {
+	padding-bottom:10px;
+	font-weight:bold;
+	color: #5B2F01;
+	font-family: Arial;
+	font-size: 14px;
+	margin:0;
+	padding:0;
+}
+#background .page #body .content .body ul li h4 a {
+	font-weight:bold;
+	color: #5B2F01;
+	font-family: Arial;
+	font-size: 14px;
+}
+#background .page #body .content .body ul li h4 a:hover {
+	color:#887450;
+}
+#background .page #body .content .body ul li p a {
+	color:#5B2F01;
+}
+#background .page #body .content .body ul li p a:hover {
+	color:#887450;
+}
+#background .page #body .content .body ul li h2 a {
+	margin:0;
+	padding:0;
+	font-family:Arial;
+	font-size:14px;
+	text-align:left;
+	color:#5B2F01;
+	text-decoration:none;
+}
+#background .page #body .content .body ul.section {
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	width:900px;
+	overflow:hidden;
+}
+#background .page #body .content .body ul.section li {
+	float:left;
+	width:425px;
+	margin-bottom:50px;
+}
+#background .page #body .content .body ul.section li.odd {
+	float:left;
+	width:425px;
+	margin-right:50px;
+}
+#background .page #body .content .body ul.section li h2 {
+	font-family:Arial;
+	font-size:18px;
+	width:425px;
+	text-align:center;
+	margin-bottom:30px;
+}
+#background .page #body .content .body ul.section li h2 a {
+	font-family:Arial;
+	font-size:18px;
+	width:425px;
+	text-align:center;
+}
+#background .page #body .content .body ul.section li h2 a:hover {
+	color:#ffffff;
+}
+#background .page #body .content .body ul.section li ul {
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+#background .page #body .content .body ul.section li ul li {
+	overflow:hidden;
+	border-right: 1px none #5B2F01;
+	border-style: none none dashed;
+	border-width: medium 1px 1px;
+	padding:10px 0;
+	margin-bottom:0;
+}
+#background .page #body .content .body ul.section li ul li.last {
+	border:none;
+}
+#background .page #body .content .body ul.section li ul li h2 {
+	margin:0;
+	padding:0;
+	font-family:Arial;
+	font-size:14px;
+	width:375px;
+	float:left;
+	text-align:left;
+}
+#background .page #body .content .body ul.section li ul li h2 a {
+	margin:0;
+	padding:0;
+	font-family:Arial;
+	font-size:14px;
+	width:375px;
+	float:left;
+	text-align:left;
+	color:#5B2F01;
+	text-decoration:none;
+}
+#background .page #body .content .body ul.section li ul li h2 a:hover {
+	color:#887450;
+}
+#background .page #body .content .body ul.section li ul li span {
+	width:50px;
+	float:left;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	text-align:right;
+}
+#background .page #body .content .body ul.section li ul li p {
+	width:425px;
+	margin:0;
+	padding:0;
+	color:#887450;
+}
+/************Start of resevation Style*****************************/	
+	#background .page #body .content .body ul.news {
+	list-style-type:disc;
+	margin-left:10px;
+	width:auto;
+}
+#background .page #body .content .body ul.news li {
+	margin:0;
+	pading:0;
+}
+#background .page #body .content .body ul.news li a {
+	text-decoration:none;
+	font-family:Georgia;
+	font-size:14px;
+	color:#5B2F01;
+}
+/************End of resevation Style*****************************/	
+
+
+/************Star of Contact Us Style*****************************/	
+	#background .page #body .content .body table tr td {
+	padding-bottom:15px;
+}
+#background .page #body .content .body table tr td span {
+	font-weight:bold;
+}
+/************End of Contact Us Style*****************************/	
+
+
+
+/************Start of Blog Style*****************************/	
+    #background .page #body .content .body div.section {
+	width:630px;
+	float:left;
+	margin-right:50px;
+}
+#background .page #body .content .body div.section h4 {
+	color:#5B2F01;
+	margin-top:20px;
+	font-size:14px;
+}
+#background .page #body .content .body div.section h4 a {
+	color:#5B2F01;
+	font-size:14px;
+}
+#background .page #body .content .body div.section p {
+	color:#5B2F01;
+	font-size:14px;
+	margin-bottom:30px;
+}
+#background .page #body .content .body div.section p a {
+	color:#5B2F01;
+	font-size:14px;
+}
+#background .page #body .content .body div.section p a:hover {
+	color:#887450;
+}
+#background .page #body .content .body div.section h4 a:hover {
+	color:#887450;
+}
+#background .page #body .content .body div.aside {
+	width:220px;
+	float:left;
+	oveflow:hidden;
+}
+#background .page #body .content .body div.aside h2 {
+	font-family:Arial;
+	font-size:16px;
+	float:left;
+	text-align:left;
+	color:#5B2F01;
+	text-decoration:none;
+	margin:20px 0 0 0;
+}
+#background .page #body .content .body div.aside ul.article {
+	margin: 0;
+}
+#background .page #body .content .body div.aside ul.article li {
+	font-family:Arial;
+	font-size:16px;
+	float:left;
+	text-align:left;
+	color:#5B2F01;
+	padding:0 0 0 10px;
+	margin:0;
+	text-decoration:none;
+	width:220px;
+	background: url("../images/bullet.gif");
+	background-position:left 10px;
+	background-repeat:no-repeat;
+}
+#background .page #body .content .body div.aside ul.article li a {
+	font-family:Arial;
+	font-size:14px;
+	float:left;
+	text-align:left;
+	color:#5B2F01;
+	padding:0;
+	text-decoration:none;
+}
+#background .page #body .content .body div.aside ul.article li a:hover {
+	color:#887450;
+}
+#background .page #body .content .body div.aside ul {
+	margin: 0;
+	list-style-type:none;
+}
+#background .page #body .content .body div.aside ul li {
+	font-family:Arial;
+	font-size:16px;
+	float:left;
+	text-align:left;
+	color:#5B2F01;
+	padding:0;
+	margin:0;
+	text-decoration:none;
+	clear:both;
+}
+#background .page #body .content .body div.aside ul li a {
+	font-family:Arial;
+	font-size:14px;
+	float:left;
+	text-align:left;
+	color:#5B2F01;
+	padding:0;
+	text-decoration:none;
+}
+#background .page #body .content .body div.aside ul li a:hover {
+	color:#887450;
+}
+/************End of Blog Style*****************************/	
+
+
+
+/**************Start of footer ******************/	
+	#background .page #footer {
+	width:960px;
+	margin: 40px auto 40px;
+	height:90px;
+	text-align:center;
+	color:#887450;
+	line-height:90px;
+	overflow:hidden;
+}
+#background .page #footer ul {
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	overflow:hidden;
+}
+#background .page #footer ul li.first {
+	width:430px;
+	float:left;
+}
+#background .page #footer ul li.first ul {
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+#background .page #footer ul li.first ul li {
+	float:left;
+	padding:0 10px;
+	width:auto;
+}
+#background .page #footer ul li.first ul li a {
+	display:inline-block;
+	text-decoration:none;
+	color:#887450;
+	font-family:Arial;
+	font-size:14px;
+}
+#background .page #footer ul li.first ul li a:hover {
+	color:#ffffff;
+}
+#background .page #footer ul li.first ul {
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+#background .page #footer ul li {
+	width:210px;
+	float:left;
+}
+#background .page #footer ul li a:hover {
+	opacity:0.4;
+	filter:alpha(opacity=40);
+}
+#background .page #footer ul li span {
+	float:left;
+	margin-right:10px;
+}
+#background .page #footer ul li a.facebook {
+	background: url("../images/icon.gif");
+	background-position: 0 0;
+	display:block;
+	width:25px;
+	height:25px;
+	text-decoration:none;
+	position:relative;
+	top:32px;
+	float:left;
+	margin-right:10px;
+}
+#background .page #footer ul li a.twitter {
+	background: url("../images/icon.gif");
+	background-position: 0 -75px;
+	float:left;
+	width:38px;
+	height:26px;
+	text-decoration:none;
+	position:relative;
+	top:32px;
+	margin-right:10px;
+}
+#background .page #footer ul li.last {
+	width:300px;
+	float:left;
+	text-align:right;
+}
+#background .page #footer ul li.last span {
+	width:300px;
+	float:left;
+	text-align:right;
+}
+	
+/*****************End of Home Page Style**************************************************************************/
